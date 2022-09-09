@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Encapsulation.Models;
+using System.Runtime.CompilerServices;
 
 namespace Encapsulation.Tests
 {
@@ -25,5 +26,14 @@ namespace Encapsulation.Tests
             _weatherReporter.CalculateTemperatureInFarenheit().Should().Be(77);
         }
 
+        [Test]
+        public void DisplayWeatherReport_Should_Return_Correct_Message()
+        {
+            _weatherReporter = new("London", 25.0);
+            
+            string displayMessage = $"I am in London and it is 🌦. " +
+                $"Ahhh...it's just right 😊!. The temperature in Fahrenheit is 77.";
+            _weatherReporter.DisplayWeatherReport().Should().Be(displayMessage);
+        }
     }
 }
