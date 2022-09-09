@@ -19,10 +19,11 @@ namespace Encapsulation.Tests
         }
 
         [Test]
-        public void TestCalculateTemperatureInFarenheit()
+        public void CalculateTemperatureInFarenheit_Should_Return_Correct_Temperature_In_Farenheit()
         {
             _weatherReporter = new("", 25.0);
             _weatherReporter.CalculateTemperatureInFarenheit().Should().Be(77);
         }
+
     }
 }
