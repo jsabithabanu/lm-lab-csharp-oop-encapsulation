@@ -3,59 +3,48 @@ namespace Encapsulation.Models
 {
     public class WeatherReporter
     {
-        public string Location;
-        public double Temperature;
+        private string _location;
+        private double _temperature;
+        private double _temperatureInFareheit;
+        private const double MINIMUM_TEMPERATURE_LIMIT = 10;
+        private const double MAXIMUM_TEMPERATURE_LIMIT = 30;
 
+        public WeatherReporter()
+        {
+            
+        }
         public WeatherReporter(string location, double temperature)
         {
-            Location = location;
-            Temperature = temperature;
+            _location = location;
+            _temperature = temperature;
         }
 
-        public string Print()
+        public double CalculateTemperatureInFarenheit()
         {
-            double newTemp = (9.0 / 5.0) * Temperature + 32;
-            return $"I am in {Location} and it is {Check1()}. {Check2()}. The temperature in Fahrenheit is {newTemp}.";
+            _temperatureInFareheit = Math.Round(((9.0 / 5.0) * _temperature + 32), 2);
+            return _temperatureInFareheit;
+        }
+        public string DisplayWeatherReport()
+        {
+            string displayMessage = $"I am in {_location} and it is {FindWeatherForecast()}. " +
+                $"{FindFeelLikeTemperature()}. The temperature in Fahrenheit is {CalculateTemperatureInFarenheit()}.";
+            Console.WriteLine(displayMessage);
+            return displayMessage;
         }
 
-        public string Check1()
+        public string FindWeatherForecast()
         {
-            if (Location == "London")
-            {
-
-                return "🌦";
-
-            }
-            else if (Location == "California")
-            {
-
-                return "🌅";
-
-            }
-            else if (Location == "Cape Town")
-            {
-
-                return "🌤";
-
-            }
-            return "🔆";
+            return _location == "London" ? "🌦"
+                : _location == "California" ? "🌅"
+                : _location == "Cape Town" ? "🌤"
+                : "🔆";
         }
 
-        public string Check2()
+        public string FindFeelLikeTemperature()
         {
-            if (Temperature > 30)
-            {
-
-                return "It's too hot 🥵!";
-
-            }
-            else if (Temperature < 10)
-            {
-
-                return "It's too cold 🥶!";
-
-            }
-            return "Ahhh...it's just right 😊!";
+            return _temperature > MAXIMUM_TEMPERATURE_LIMIT ? "It's too hot 🥵!"
+                : _temperature < MINIMUM_TEMPERATURE_LIMIT ? "It's too cold 🥶!"
+                : "Ahhh...it's just right 😊!";
         }
 
     }

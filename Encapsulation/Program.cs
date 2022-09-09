@@ -56,3 +56,7 @@ Console.WriteLine("Oh no :( It looks like we can't do this - it's too secure!");
 //mySecureBankAccount._accountBalance = 1000000;
 mySecureBankAccount.DisplayAccountBalanceDetails();
 Console.WriteLine("😹 Well I guess that's secure!");
+
+//WEATHER REPORTER
+WeatherReporter weatherReporter = new("California", 25.0);
+weatherReporter.DisplayWeatherReport();
