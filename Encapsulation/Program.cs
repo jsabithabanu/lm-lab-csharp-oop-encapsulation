@@ -58,5 +58,5 @@ mySecureBankAccount.DisplayAccountBalanceDetails();
 Console.WriteLine("😹 Well I guess that's secure!");
 
 //WEATHER REPORTER
-WeatherReporter weatherReporter = new("California", 25.0);
+WeatherReporter weatherReporter = new("California", 25.5);
 weatherReporter.DisplayWeatherReport();
